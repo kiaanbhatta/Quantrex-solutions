@@ -1,2 +1,0 @@
-# Quantrex-solutions
-
