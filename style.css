@@ -115,7 +115,6 @@ textarea {
     place-items: center;
     width: 42px;
     height: 42px;
-    border: 2px solid #eef8ff;
     border-radius: 50%;
     font-weight: 900;
     font-size: 25px;
@@ -1849,9 +1848,9 @@ h1 span {
     z-index: 999999;
     background:
         radial-gradient(circle at center,
-        rgba(0, 126, 255, 0.12) 0%,
-        rgba(0, 0, 0, 0.95) 42%,
-        #02040a 100%);
+            rgba(0, 126, 255, 0.12) 0%,
+            rgba(0, 0, 0, 0.95) 42%,
+            #02040a 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1893,18 +1892,12 @@ h1 span {
 @keyframes gridMove {
     from {
         transform:
-            perspective(500px)
-            rotateX(60deg)
-            scale(1.8)
-            translateY(0);
+            perspective(500px) rotateX(60deg) scale(1.8) translateY(0);
     }
 
     to {
         transform:
-            perspective(500px)
-            rotateX(60deg)
-            scale(1.8)
-            translateY(55px);
+            perspective(500px) rotateX(60deg) scale(1.8) translateY(55px);
     }
 }
 
@@ -1938,7 +1931,9 @@ h1 span {
 }
 
 @keyframes glowFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(0, 0);
     }
 
@@ -2071,7 +2066,9 @@ h1 span {
 }
 
 @keyframes dotFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
 
@@ -2085,7 +2082,9 @@ h1 span {
 --------------------------------------------------------- */
 
 @keyframes logoPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         filter: brightness(1);
     }
@@ -2108,8 +2107,8 @@ h1 span {
     color: white;
     line-height: 1;
     text-shadow:
-        0 0 10px rgba(255,255,255,.2),
-        0 0 30px rgba(0, 153, 255,.25);
+        0 0 10px rgba(255, 255, 255, .2),
+        0 0 30px rgba(0, 153, 255, .25);
 }
 
 .loader-brand h1 span {
@@ -2156,7 +2155,7 @@ h1 span {
 .loader-progress {
     width: 100%;
     height: 3px;
-    background: rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
     border-radius: 10px;
     overflow: hidden;
     position: relative;
@@ -2166,24 +2165,20 @@ h1 span {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(0, 153, 255, .2),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 153, 255, .2),
+            transparent);
     animation: progressScan 1.5s linear infinite;
 }
 
 #loaderProgress {
     width: 0%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        #006eff,
-        #00c8ff,
-        #ffffff
-    );
+    background: linear-gradient(90deg,
+            #006eff,
+            #00c8ff,
+            #ffffff);
     box-shadow:
         0 0 10px #008cff,
         0 0 25px rgba(0, 140, 255, .7);
@@ -2381,14 +2376,14 @@ h1 span {
 /* Lighter hero shadow */
 .visual-card {
     box-shadow:
-        0 20px 55px rgba(0,106,255,.18),
-        inset 0 0 30px rgba(13,131,255,.06);
+        0 20px 55px rgba(0, 106, 255, .18),
+        inset 0 0 30px rgba(13, 131, 255, .06);
 }
 
 
 /* Avoid expensive header blur */
 .site-header {
-    background: rgba(5,9,20,.94);
+    background: rgba(5, 9, 20, .94);
     backdrop-filter: none;
 }
 
@@ -2421,7 +2416,7 @@ h1 span {
 
     .visual-card {
         box-shadow:
-            0 15px 40px rgba(0,106,255,.16);
+            0 15px 40px rgba(0, 106, 255, .16);
     }
 }
 
@@ -2454,11 +2449,9 @@ h1 span {
     position: relative;
     padding: 110px 7%;
     background:
-        radial-gradient(
-            circle at 50% 20%,
+        radial-gradient(circle at 50% 20%,
             rgba(0, 195, 255, 0.10),
-            transparent 40%
-        ),
+            transparent 40%),
         #050912;
     overflow: hidden;
 }
@@ -2533,12 +2526,10 @@ h1 span {
 .team-header h2 span {
     display: block;
 
-    background: linear-gradient(
-        90deg,
-        #00d9ff,
-        #00aaff,
-        #00ffd0
-    );
+    background: linear-gradient(90deg,
+            #00d9ff,
+            #00aaff,
+            #00ffd0);
 
     -webkit-background-clip: text;
     background-clip: text;
@@ -2578,11 +2569,9 @@ h1 span {
     overflow: hidden;
 
     background:
-        linear-gradient(
-            145deg,
+        linear-gradient(145deg,
             rgba(14, 25, 42, 0.95),
-            rgba(5, 12, 23, 0.95)
-        );
+            rgba(5, 12, 23, 0.95));
 
     border: 1px solid rgba(0, 200, 255, 0.16);
 
@@ -2601,12 +2590,10 @@ h1 span {
     inset: 0;
 
     background:
-        linear-gradient(
-            120deg,
+        linear-gradient(120deg,
             transparent 30%,
             rgba(0, 210, 255, 0.08),
-            transparent 70%
-        );
+            transparent 70%);
 
     opacity: 0;
     transition: opacity 0.35s ease;
@@ -2641,11 +2628,9 @@ h1 span {
     overflow: hidden;
 
     background:
-        radial-gradient(
-            circle at center,
+        radial-gradient(circle at center,
             rgba(0, 195, 255, 0.18),
-            transparent 65%
-        );
+            transparent 65%);
 }
 
 .team-image img {
@@ -2653,7 +2638,7 @@ h1 span {
     height: 100%;
 
     object-fit: cover;
-        object-position: center 25%;
+    object-position: center 25%;
 
 
     transition:
@@ -2671,11 +2656,9 @@ h1 span {
 
 .team-image.placeholder {
     background:
-        radial-gradient(
-            circle,
+        radial-gradient(circle,
             rgba(0, 210, 255, 0.20),
-            transparent 65%
-        );
+            transparent 65%);
 }
 
 .team-image.placeholder::before {
@@ -2723,6 +2706,7 @@ h1 span {
 }
 
 @keyframes teamPulse {
+
     0%,
     100% {
         transform: scale(0.95);
@@ -2853,11 +2837,9 @@ h1 span {
     border-radius: 12px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(0, 190, 255, 0.12),
-            rgba(0, 255, 200, 0.05)
-        );
+            rgba(0, 255, 200, 0.05));
 
     transition: 0.3s ease;
 }
@@ -2918,6 +2900,779 @@ h1 span {
 
     .team-info {
         padding: 23px;
+    }
+
+}
+
+/* =========================================================
+   SERVICES v2 · HOVER + 3D EFFECTS · MOBILE FIXES
+   (uses the existing theme variables; no colors changed)
+========================================================= */
+img {
+    max-width: 100%;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.modal-card {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+.svc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    perspective: 1200px;
+}
+
+.svc-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 26px 22px 22px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(12, 27, 48, .92), rgba(6, 15, 28, .96));
+    border: 1px solid rgba(50, 149, 231, .22);
+    transform-style: preserve-3d;
+    transition: transform .4s cubic-bezier(.2, .8, .2, 1), border-color .3s, box-shadow .3s;
+}
+
+.svc-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s;
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 0%), rgba(36, 216, 255, .16), transparent 60%);
+}
+
+.svc-card:hover,
+.svc-card:focus-within {
+    border-color: rgba(35, 183, 255, .65);
+    box-shadow: var(--shadow);
+}
+
+.svc-card:hover::before {
+    opacity: 1;
+}
+
+.svc-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--blue), var(--blue2));
+    box-shadow: 0 10px 24px rgba(10, 167, 255, .28);
+    transition: transform .4s;
+}
+
+.svc-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.svc-card:nth-child(2) .svc-icon {
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+}
+
+.svc-card:nth-child(3) .svc-icon {
+    background: linear-gradient(135deg, #0d7f9a, var(--cyan));
+}
+
+.svc-card:nth-child(4) .svc-icon {
+    color: #04101f;
+    background: linear-gradient(135deg, var(--lime), #3fbf00);
+    box-shadow: 0 10px 24px rgba(117, 255, 0, .22);
+}
+
+.svc-card:nth-child(5) .svc-icon {
+    background: linear-gradient(135deg, var(--blue2), var(--cyan));
+}
+
+.svc-card:nth-child(6) .svc-icon {
+    color: #04101f;
+    background: linear-gradient(135deg, var(--lime), var(--cyan));
+}
+
+.svc-card:hover .svc-icon {
+    transform: translateZ(40px) scale(1.08) rotate(-4deg);
+}
+
+.svc-card h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+    transition: transform .4s;
+}
+
+.svc-card:hover h3 {
+    transform: translateZ(22px);
+}
+
+.svc-card p {
+    color: #8fa0b8;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+.svc-card ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.svc-card li {
+    font-size: 12px;
+    color: #a9b8cf;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.svc-card li::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+}
+
+.svc-more {
+    margin-top: auto;
+    align-self: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--cyan);
+    display: inline-flex;
+    gap: 8px;
+    transition: gap .3s, color .3s;
+}
+
+.svc-card:hover .svc-more {
+    gap: 14px;
+    color: var(--lime);
+}
+
+/* 3D tilt (class added by script.js on mouse devices) */
+.hero-visual {
+    perspective: 1200px;
+}
+
+.is-tilting {
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) !important;
+    transition: transform .12s ease-out !important;
+    will-change: transform;
+}
+
+/* Hover polish */
+.btn,
+.order-btn,
+.nav-cta,
+.team-view-btn {
+    transition: transform .25s, box-shadow .25s, filter .25s;
+}
+
+.btn:hover,
+.order-btn:hover,
+.nav-cta:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.12);
+}
+
+.btn:active,
+.order-btn:active,
+.nav-cta:active {
+    transform: translateY(0) scale(.98);
+}
+
+.price-card:hover,
+.team-card:hover {
+    border-color: rgba(35, 183, 255, .65);
+}
+
+@media (max-width: 900px) {
+    .svc-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .svc-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .svc-card:active {
+        transform: scale(.985);
+    }
+}
+
+
+.brand-mark {
+    overflow: hidden;
+    padding: 0;
+}
+
+.brand-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* ===== WHY CHOOSE QUANTREX (v2) ===== */
+.why-v2 .wc-head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+}
+
+.why-v2 .wc-head h2 {
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+}
+
+.why-v2 .wc-head h2 em {
+    font-style: normal;
+    color: var(--blue);
+}
+
+.why-v2 .wc-head p {
+    color: var(--muted);
+    margin-top: 14px;
+    font-size: 15px;
+}
+
+.wc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.wc-card {
+    position: relative;
+    text-align: center;
+    padding: 34px 26px 32px;
+    border-radius: 18px;
+    background: linear-gradient(160deg, rgba(12, 27, 48, .9), rgba(6, 15, 28, .96));
+    border: 1px solid rgba(50, 149, 231, .24);
+    transition: transform .35s, border-color .3s, box-shadow .3s;
+}
+
+.wc-card:hover {
+    border-color: rgba(35, 183, 255, .65);
+    box-shadow: var(--shadow);
+}
+
+.wc-card.featured {
+    padding: 46px 28px 38px;
+    background: linear-gradient(160deg, rgba(16, 42, 76, .95), rgba(7, 20, 38, .98));
+    border-color: rgba(36, 216, 255, .5);
+    box-shadow: 0 25px 70px rgba(0, 116, 255, .28);
+}
+
+/* icon inside a soft glowing ring */
+.wc-icon {
+    position: relative;
+    width: 104px;
+    height: 104px;
+    margin: -6px auto 18px;
+    display: grid;
+    place-items: center;
+}
+
+.wc-icon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(36, 216, 255, .18);
+    background: radial-gradient(circle, rgba(10, 167, 255, .16), transparent 70%);
+}
+
+.wc-icon span {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: linear-gradient(135deg, var(--blue), var(--blue2));
+    box-shadow: 0 12px 30px rgba(10, 167, 255, .35);
+    transition: transform .35s;
+}
+
+.wc-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.wc-cyan .wc-icon span {
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+}
+
+.wc-lime .wc-icon span {
+    color: #04101f;
+    background: linear-gradient(135deg, var(--lime), var(--cyan));
+    box-shadow: 0 12px 30px rgba(117, 255, 0, .25);
+}
+
+.wc-card:hover .wc-icon span {
+    transform: scale(1.1) rotate(-6deg);
+}
+
+.wc-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    margin-bottom: 18px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+.wc-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.wc-card p {
+    color: #9db0c9;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* price-range bar */
+.wc-bar {
+    margin-top: 24px;
+    text-align: left;
+}
+
+.wc-bar-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.wc-bar-row span {
+    color: var(--cyan);
+}
+
+.wc-bar-row b {
+    color: #fff;
+}
+
+.wc-bar-row span:nth-of-type(2) {
+    margin-left: auto;
+}
+
+.wc-track {
+    height: 6px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, .1);
+    overflow: hidden;
+}
+
+.wc-track i {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--blue2), var(--cyan), var(--lime));
+    transition: width 1.4s .3s ease;
+}
+
+.wc-card.visible .wc-track i {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .wc-grid {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+        gap: 18px;
+    }
+
+    .wc-card.featured {
+        order: -1;
+        padding: 38px 24px 32px;
+    }
+
+    /* featured card first on phones */
+}
+
+
+/* ===== WHY CHOOSE: 3D HOVER + INFINITE ANIMATIONS ===== */
+
+/* 3D setup: children can now pop out of the card */
+.wc-grid {
+    perspective: 1200px;
+}
+
+.wc-card,
+.wc-icon {
+    transform-style: preserve-3d;
+}
+
+/* Cursor glow that follows the mouse (position set by the tilt script) */
+.wc-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s;
+    background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 0%), rgba(36, 216, 255, .18), transparent 60%);
+}
+
+.wc-card:hover::before {
+    opacity: 1;
+}
+
+/* Layers lift off the card on hover (needs the tilt to look 3D) */
+.wc-card:hover .wc-icon span {
+    transform: translateZ(50px) scale(1.1) rotate(-6deg);
+}
+
+.wc-card:hover .wc-pill {
+    transform: translateZ(30px);
+}
+
+.wc-card:hover h3 {
+    transform: translateZ(24px);
+}
+
+.wc-card:hover .wc-bar {
+    transform: translateZ(20px);
+}
+
+.wc-pill,
+.wc-card h3,
+.wc-bar {
+    transition: transform .4s;
+}
+
+/* ---------- Infinite animations ---------- */
+
+/* 1. Cards float gently. Uses the separate "translate" property,
+      so it never fights the 3D tilt, which uses "transform". */
+.wc-card {
+    animation: wcFloat 6s ease-in-out infinite;
+}
+
+.wc-card:nth-child(2) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.wc-card:nth-child(3) {
+    animation-delay: -4s;
+}
+
+.wc-card:hover {
+    animation-play-state: paused;
+}
+
+@keyframes wcFloat {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -10px;
+    }
+}
+
+/* 2. Icon bobs up and down */
+.wc-icon {
+    animation: wcBob 3.6s ease-in-out infinite;
+}
+
+.wc-card:nth-child(2) .wc-icon {
+    animation-delay: -1.2s;
+}
+
+.wc-card:nth-child(3) .wc-icon {
+    animation-delay: -2.4s;
+}
+
+@keyframes wcBob {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* 3. Spinning ring around each icon */
+.wc-icon::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    pointer-events: none;
+    border: 1px dashed rgba(36, 216, 255, .35);
+    border-top: 2px solid var(--cyan);
+    animation: wcSpin 8s linear infinite;
+}
+
+.wc-card:nth-child(2) .wc-icon::after {
+    animation-duration: 6s;
+    animation-direction: reverse;
+}
+
+.wc-lime .wc-icon::after {
+    border-top-color: var(--lime);
+}
+
+@keyframes wcSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 4. Soft glow-pulse on the featured card */
+.wc-card.featured {
+    animation: wcFloat 7s ease-in-out -2s infinite, wcGlow 3.5s ease-in-out infinite;
+}
+
+@keyframes wcGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 25px 70px rgba(0, 116, 255, .28);
+    }
+
+    50% {
+        box-shadow: 0 25px 95px rgba(36, 216, 255, .5);
+    }
+}
+
+/* 5. Pulsing dot inside each pill */
+.wc-pill::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    vertical-align: middle;
+    animation: wcPulse 1.8s ease-in-out infinite;
+}
+
+.wc-lime .wc-pill::before {
+    background: var(--lime);
+}
+
+@keyframes wcPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: .5;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+/* 6. Shine sweeping across the price bar */
+.wc-track i {
+    position: relative;
+    overflow: hidden;
+}
+
+.wc-track i::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -40%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .65), transparent);
+    animation: wcShine 2.2s ease-in-out infinite;
+}
+
+@keyframes wcShine {
+    to {
+        left: 110%;
+    }
+}
+
+/* Keep phones smooth: no floating cards, other effects stay */
+@media (max-width: 600px) {
+
+    .wc-card,
+    .wc-card.featured {
+        animation: none;
+    }
+
+    .wc-card.featured {
+        animation: wcGlow 3.5s ease-in-out infinite;
+    }
+}
+
+/* =========================================
+   FLOATING WHATSAPP BUTTON
+========================================= */
+
+.whatsapp-float {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 62px;
+    height: 62px;
+
+    background: #25D366;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    z-index: 999;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, .35);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    animation: whatsappFloat 2.5s ease-in-out infinite;
+}
+
+.whatsapp-float svg {
+    width: 34px;
+    height: 34px;
+
+    fill: white;
+
+    position: relative;
+    z-index: 2;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.12);
+
+    box-shadow:
+        0 15px 40px rgba(37, 211, 102, .35);
+}
+
+
+/* PULSING RING */
+
+.whatsapp-pulse {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    border: 2px solid #25D366;
+
+    animation: whatsappPulse 1.8s ease-out infinite;
+}
+
+
+@keyframes whatsappPulse {
+
+    0% {
+        transform: scale(1);
+        opacity: .8;
+    }
+
+    70% {
+        transform: scale(1.45);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.45);
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes whatsappFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+
+        right: 18px;
+        bottom: 18px;
+    }
+
+    .whatsapp-float svg {
+        width: 30px;
+        height: 30px;
     }
 
 }

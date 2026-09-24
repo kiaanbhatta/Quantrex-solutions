@@ -1,288 +1,105 @@
 const WHATSAPP = '9779848460294';
+const $ = id => document.getElementById(id);
+const canHover = matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('done'), 650);
-});
+/* Footer year */
+if ($('year')) $('year').textContent = new Date().getFullYear();
 
-document.getElementById('year').textContent = new Date().getFullYear();
+/* Mobile menu */
+const menuToggle = $('menuToggle'), navLinks = $('navLinks');
+if (menuToggle && navLinks) {
+  const setMenu = open => {
+    navLinks.classList.toggle('open', open);
+    menuToggle.classList.toggle('active', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+  };
+  menuToggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+}
 
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-menuToggle.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  menuToggle.classList.toggle('active', open);
-  menuToggle.setAttribute('aria-expanded', String(open));
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  navLinks.classList.remove('open');
-  menuToggle.classList.remove('active');
-  menuToggle.setAttribute('aria-expanded', 'false');
-}));
+/* Scroll reveal (falls back to visible if unsupported) */
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); }
+  }), { threshold: 0.08 });
+  revealEls.forEach(el => io.observe(el));
+} else revealEls.forEach(el => el.classList.add('visible'));
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-const modal = document.getElementById('orderModal');
-const modalTitle = document.getElementById('modalTitle');
-const customerName = document.getElementById('customerName');
-const customerNote = document.getElementById('customerNote');
-let selectedPlan = '';
-
-document.querySelectorAll('.order-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    selectedPlan = btn.dataset.plan;
-    modalTitle.textContent = selectedPlan;
+/* Order modal */
+const modal = $('orderModal');
+if (modal) {
+  const title = $('modalTitle'), nameInput = $('customerName'), noteInput = $('customerNote'), toast = $('toast');
+  let plan = '', lastBtn = null;
+  const closeModal = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    if (lastBtn) lastBtn.focus();
+  };
+  document.querySelectorAll('.order-btn').forEach(btn => btn.addEventListener('click', () => {
+    plan = btn.dataset.plan; lastBtn = btn;
+    title.textContent = plan;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
-    setTimeout(() => customerName.focus(), 80);
+    document.body.classList.add('modal-open');
+    setTimeout(() => nameInput.focus(), 80);
+  }));
+  $('modalClose').addEventListener('click', closeModal);
+  modal.querySelector('.modal-backdrop').addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+  $('modalSend').addEventListener('click', () => {
+    const name = nameInput.value.trim() || 'A customer';
+    const note = noteInput.value.trim() || 'I would like to discuss this package.';
+    const text = `Hello Quantrex Solutions!\n\nName: ${name}\nPackage: ${plan}\nProject details: ${note}\n\nI'd like to get started.`;
+    closeModal();
+    toast.classList.add('show');
+    setTimeout(() => window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`, '_blank', 'noopener'), 250);
+    setTimeout(() => toast.classList.remove('show'), 2600);
   });
-});
-function closeModal() {
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden', 'true');
 }
-document.getElementById('modalClose').addEventListener('click', closeModal);
-modal.querySelector('.modal-backdrop').addEventListener('click', closeModal);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-document.getElementById('modalSend').addEventListener('click', () => {
-  const name = customerName.value.trim() || 'A customer';
-  const note = customerNote.value.trim() || 'I would like to discuss this package.';
-  const message = `Hello Quantrex Solutions!%0A%0AName: ${encodeURIComponent(name)}%0APackage: ${encodeURIComponent(selectedPlan)}%0AProject details: ${encodeURIComponent(note)}%0A%0AI'd like to get started.`;
-  closeModal();
-  const toast = document.getElementById('toast');
-  toast.classList.add('show');
-  setTimeout(() => { window.open(`https://wa.me/${WHATSAPP}?text=${message}`, '_blank', 'noopener'); }, 250);
-  setTimeout(() => toast.classList.remove('show'), 2600);
-});
-
-
-
-/* =========================================================
-   PREMIUM QUANTREX LOADER
-========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
-    const loader = document.getElementById("premium-loader");
-    const progress = document.getElementById("loaderProgress");
-    const percent = document.getElementById("loaderPercent");
-    const status = document.getElementById("loaderStatus");
-
-    if (!loader) return;
-
-    document.body.classList.add("loading");
-
-    let value = 0;
-
-    const interval = setInterval(() => {
-
-        value += Math.floor(Math.random() * 12) + 8;
-
-        if (value >= 100) {
-            value = 100;
-            clearInterval(interval);
-
-            progress.style.width = "100%";
-            percent.textContent = "100%";
-            status.textContent = "WELCOME TO QUANTREX";
-
-            setTimeout(() => {
-                loader.classList.add("loader-hidden");
-
-                document.body.classList.remove("loading");
-                document.body.style.overflow = "";
-
-                setTimeout(() => {
-                    loader.remove();
-                }, 700);
-
-            }, 250);
-        }
-
-        progress.style.width = value + "%";
-        percent.textContent = value + "%";
-
-        if (value < 30) {
-            status.textContent = "INITIALIZING SYSTEM";
-        } else if (value < 55) {
-            status.textContent = "LOADING QUANTREX";
-        } else if (value < 80) {
-            status.textContent = "PREPARING EXPERIENCE";
-        } else if (value < 100) {
-            status.textContent = "ALMOST READY";
-        }
-
-    }, 90);
-});
-
-
-// const WHATSAPP = "9779848460294";
-
-// const loader = document.getElementById("loader");
-
-// window.addEventListener("load", () => {
-//     requestAnimationFrame(() => {
-//         setTimeout(() => {
-//             loader.classList.add("done");
-//         }, 250);
-//     });
-// });
-
-
-// /* Footer year */
-// const year = document.getElementById("year");
-
-// if (year) {
-//     year.textContent = new Date().getFullYear();
-// }
-
-
-// /* Mobile menu */
-// const menuToggle = document.getElementById("menuToggle");
-// const navLinks = document.getElementById("navLinks");
-
-// if (menuToggle && navLinks) {
-
-//     menuToggle.addEventListener("click", () => {
-
-//         const open = navLinks.classList.toggle("open");
-
-//         menuToggle.classList.toggle("active", open);
-
-//         menuToggle.setAttribute(
-//             "aria-expanded",
-//             String(open)
-//         );
-//     });
-
-//     navLinks.querySelectorAll("a").forEach(link => {
-
-//         link.addEventListener("click", () => {
-
-//             navLinks.classList.remove("open");
-//             menuToggle.classList.remove("active");
-
-//             menuToggle.setAttribute(
-//                 "aria-expanded",
-//                 "false"
-//             );
-//         });
-
-//     });
-// }
-
-
-// /* Scroll reveal — desktop only */
-// if (window.matchMedia("(min-width: 701px)").matches) {
-
-//     const observer = new IntersectionObserver(
-//         entries => {
-
-//             entries.forEach(entry => {
-
-//                 if (entry.isIntersecting) {
-
-//                     entry.target.classList.add("visible");
-
-//                     observer.unobserve(entry.target);
-//                 }
-
-//             });
-
-//         },
-//         {
-//             threshold: 0.08
-//         }
-//     );
-
-//     document
-//         .querySelectorAll(".reveal")
-//         .forEach(element => observer.observe(element));
-// }
-
-
-// /* Order modal */
-// const modal = document.getElementById("orderModal");
-// const modalTitle = document.getElementById("modalTitle");
-// const customerName = document.getElementById("customerName");
-// const customerNote = document.getElementById("customerNote");
-
-// let selectedPlan = "";
-
-
-// document.querySelectorAll(".order-btn").forEach(button => {
-
-//     button.addEventListener("click", () => {
-
-//         selectedPlan = button.dataset.plan;
-
-//         modalTitle.textContent = selectedPlan;
-
-//         modal.classList.add("open");
-
-//         modal.setAttribute("aria-hidden", "false");
-
-//         customerName.focus();
-//     });
-
-// });
-
-
-// function closeModal() {
-
-//     modal.classList.remove("open");
-
-//     modal.setAttribute("aria-hidden", "true");
-// }
-
-
-// document.getElementById("modalClose")
-//     .addEventListener("click", closeModal);
-
-
-// modal.querySelector(".modal-backdrop")
-//     .addEventListener("click", closeModal);
-
-
-// document.addEventListener("keydown", event => {
-
-//     if (event.key === "Escape") {
-//         closeModal();
-//     }
-
-// });
-
-
-// /* WhatsApp order */
-// document.getElementById("modalSend")
-//     .addEventListener("click", () => {
-
-//         const name =
-//             customerName.value.trim() ||
-//             "A customer";
-
-//         const note =
-//             customerNote.value.trim() ||
-//             "I would like to discuss this package.";
-
-//         const message =
-//             `Hello Quantrex Solutions!%0A%0A` +
-//             `Name: ${encodeURIComponent(name)}%0A` +
-//             `Package: ${encodeURIComponent(selectedPlan)}%0A` +
-//             `Project details: ${encodeURIComponent(note)}%0A%0A` +
-//             `I'd like to get started.`;
-
-//         closeModal();
-
-//         window.open(
-//             `https://wa.me/${WHATSAPP}?text=${message}`,
-//             "_blank",
-//             "noopener"
-//         );
-//     });
+/* Premium loader (index page only) */
+(() => {
+  const loader = $('premium-loader');
+  if (!loader) return;
+  const bar = $('loaderProgress'), pct = $('loaderPercent'), status = $('loaderStatus');
+  let value = 0, finished = false;
+  document.body.style.overflow = 'hidden';
+  const finish = () => {
+    if (finished) return; finished = true;
+    loader.classList.add('loader-hidden');
+    document.body.style.overflow = '';
+    setTimeout(() => loader.remove(), 700);
+  };
+  const timer = setInterval(() => {
+    value = Math.min(100, value + Math.floor(Math.random() * 12) + 8);
+    bar.style.width = value + '%';
+    pct.textContent = value + '%';
+    status.textContent = value < 30 ? 'INITIALIZING SYSTEM' : value < 55 ? 'LOADING QUANTREX'
+      : value < 80 ? 'PREPARING EXPERIENCE' : value < 100 ? 'ALMOST READY' : 'WELCOME TO QUANTREX';
+    if (value >= 100) { clearInterval(timer); setTimeout(finish, 250); }
+  }, 90);
+  setTimeout(finish, 4000); // failsafe: never trap the visitor behind the loader
+})();
+
+/* 3D tilt + cursor glow (mouse devices only) */
+if (canHover) {
+  document.querySelectorAll('.svc-card, .price-card, .team-card, .visual-card, .founder-card, .wc-card').forEach(card => {
+    let raf;
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        card.classList.add('is-tilting');
+        card.style.setProperty('--rx', ((.5 - y) * 10).toFixed(2) + 'deg');
+        card.style.setProperty('--ry', ((x - .5) * 12).toFixed(2) + 'deg');
+        card.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        card.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+      });
+    });
+    card.addEventListener('pointerleave', () => { cancelAnimationFrame(raf); card.classList.remove('is-tilting'); });
+  });
+}
